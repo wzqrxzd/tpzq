@@ -1,3 +1,0 @@
-/home/wzqrxzd/projects/tpzq/build/CMakeFiles/tpzq.dir
-/home/wzqrxzd/projects/tpzq/build/CMakeFiles/edit_cache.dir
-/home/wzqrxzd/projects/tpzq/build/CMakeFiles/rebuild_cache.dir
