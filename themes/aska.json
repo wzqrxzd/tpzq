@@ -1,25 +1,25 @@
 {
     "hyprland": {
-        "active_color": "rgba(6F608DFF)",
-        "inactive_color": "rgba(53486AFF)",
+        "active_color": "rgba(A0302BFF)",
+        "inactive_color": "rgba(782420FF)",
         "path": "/home/wzqrxzd/.config/hypr/hyprland.conf"
     },
     "tpzq": {
-        "accent_color": "#6F608D",
+        "accent_color": "#A0302B",
         "color": "#A0302B",
-        "hovered_color": "#53486A"
+        "hovered_color": "#782420"
     },
     "wallpaper": {
-        "current": "/home/wzqrxzd/Wallpapers/walp2.jpg",
+        "current": "/home/wzqrxzd/Wallpapers/walp13.jpg",
         "hyprpaper_path": "/home/wzqrxzd/.config/hypr/hyprpaper.conf",
         "path_dir": "/home/wzqrxzd/Wallpapers/"
     },
     "waybar": {
-        "color": "#6F608D",
+        "color": "#A0302B",
         "path": "/home/wzqrxzd/.config/waybar/style.css"
     },
     "wofi": {
-        "color": "#97677D",
+        "color": "#A0302B",
         "path": "/home/wzqrxzd/.config/wofi/style.css"
     }
 }

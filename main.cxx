@@ -15,11 +15,6 @@ void onClick(ConfigManager& mgr, const fs::path& theme, json& configApp);
 
 int main(int argc, char* argv[])
 {
-  QApplication app(argc, argv);
-
-  QWidget* window = new QWidget();
-  QHBoxLayout *layout = new QHBoxLayout(window);
-
   fs::path configPath("/home/wzqrxzd/projects/tpzq/build/config.json");
   fs::path themesDir("/home/wzqrxzd/projects/tpzq/themes/");
 
@@ -27,19 +22,25 @@ int main(int argc, char* argv[])
   auto themesSet = cfgManager.getThemesSet();
   json config = cfgManager.getConfig();
 
+  QApplication app(argc, argv);
+
+  QWidget* window = new QWidget();
+  QHBoxLayout *layout = new QHBoxLayout(window);
+
   std::string windowStyle = std::format("background-color: {};", config["background-color"].get<std::string>());
 
   std::string buttonStyle = std::format(
     "QPushButton {{ border-radius: 10px; background-color: {}; color: white; font-size: 14px; border: none; padding: 10px; }} "
-    "QPushButton:hover {{ background-color: {}; }}", 
-    config["accent_color"].get<std::string>(), config["hovered_color"].get<std::string>()
+    "QPushButton:hover {{ background-color: {}; }}"
+    "QPushButton:focus {{ background-color: {}; outline: none; }}", 
+    config["accent_color"].get<std::string>(), config["hovered_color"].get<std::string>(), config["hovered_color"].get<std::string>()
   );
 
   window->setStyleSheet(windowStyle.c_str());
 
   for (const auto& theme : themesSet)
   {
-    QPushButton* button = new QPushButton(QString::fromStdString(theme.filename().string()));
+    QPushButton* button = new QPushButton(QString::fromStdString(theme.stem()));
     button->setFixedSize(100, 100);
     layout->setSpacing(30);
 
@@ -76,6 +77,6 @@ void onClick(ConfigManager& mgr, const fs::path& theme, json& configApp)
   for (const auto& controller : controllers)
     controller->apply();
 
-  /*spdlog::info("Successfully updated theme");*/
+  spdlog::info("Successfully updated theme");
   exit(0);
 }
