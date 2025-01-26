@@ -4,6 +4,11 @@
         "inactive_color": "rgba(714D5EFF)",
         "path": "/home/wzqrxzd/.config/hypr/hyprland.conf"
     },
+    "tpzq": {
+        "accent_color": "#97677D",
+        "color": "#A0302B",
+        "hovered_color": "#714D5E"
+    },
     "wallpaper": {
         "current": "/home/wzqrxzd/Wallpapers/walp1.jpg",
         "hyprpaper_path": "/home/wzqrxzd/.config/hypr/hyprpaper.conf",

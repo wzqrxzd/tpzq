@@ -4,6 +4,11 @@
         "inactive_color": "rgba(782420FF)",
         "path": "/home/wzqrxzd/.config/hypr/hyprland.conf"
     },
+    "tpzq": {
+        "accent_color": "#A0302B",
+        "color": "#A0302B",
+        "hovered_color": "#782420"
+    },
     "wallpaper": {
         "current": "/home/wzqrxzd/Wallpapers/walp13.jpg",
         "hyprpaper_path": "/home/wzqrxzd/.config/hypr/hyprpaper.conf",
@@ -14,7 +19,7 @@
         "path": "/home/wzqrxzd/.config/waybar/style.css"
     },
     "wofi": {
-        "color": "#A0302B",
+        "color": "#97677D",
         "path": "/home/wzqrxzd/.config/wofi/style.css"
     }
 }

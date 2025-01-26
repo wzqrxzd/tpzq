@@ -5,6 +5,9 @@ project(tpzq)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
+find_package(Qt5 REQUIRED COMPONENTS Widgets WaylandClient)
+set(CMAKE_AUTOMOC ON)
+
 add_executable(tpzq
   main.cxx
   config_manager.cxx
@@ -18,4 +21,6 @@ target_link_libraries(tpzq
     PRIVATE
     spdlog
     fmt
+    Qt5::Widgets
+    Qt5::WaylandClient
 )

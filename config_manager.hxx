@@ -11,12 +11,17 @@ namespace fs = std::filesystem;
 class ConfigManager
 {
   public:
-    ConfigManager(const fs::path& themesDir);
+    ConfigManager(const fs::path& config, const fs::path& themesDir);
     std::unordered_set<fs::path> getThemesSet();
-    json getTheme(const fs::path& theme);
+    json getConfig();
+    json getTheme(const fs::path& themePath);
+    void saveConfig(const json& config);
   private:
+    const fs::path configPath;
     const fs::path themesDir;
     std::unordered_set<fs::path> themesSet;
+
+    void createDefaultConfig();
 };
 
 #endif
