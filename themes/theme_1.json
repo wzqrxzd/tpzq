@@ -1,0 +1,20 @@
+{
+    "hyprland": {
+        "active_color": "rgba(97677DFF)",
+        "inactive_color": "rgba(714D5EFF)",
+        "path": "/home/wzqrxzd/.config/hypr/hyprland.conf"
+    },
+    "wallpaper": {
+        "current": "/home/wzqrxzd/Wallpapers/walp1.jpg",
+        "hyprpaper_path": "/home/wzqrxzd/.config/hypr/hyprpaper.conf",
+        "path_dir": "/home/wzqrxzd/Wallpapers/"
+    },
+    "waybar": {
+        "color": "#97677D",
+        "path": "/home/wzqrxzd/.config/waybar/style.css"
+    },
+    "wofi": {
+        "color": "#97677D",
+        "path": "/home/wzqrxzd/.config/wofi/style.css"
+    }
+}

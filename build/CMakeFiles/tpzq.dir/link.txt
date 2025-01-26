@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/tpzq.dir/link.d CMakeFiles/tpzq.dir/main.cxx.o CMakeFiles/tpzq.dir/config_manager.cxx.o CMakeFiles/tpzq.dir/hyprland_controller.cxx.o CMakeFiles/tpzq.dir/waybar_controller.cxx.o CMakeFiles/tpzq.dir/wallpaper_controller.cxx.o CMakeFiles/tpzq.dir/wofi_controller.cxx.o -o tpzq  -lspdlog -lfmt

@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/wzqrxzd/projects/tpzq/build",
+  "command": "/usr/bin/c++   -std=gnu++23 -o CMakeFiles/tpzq.dir/main.cxx.o -c /home/wzqrxzd/projects/tpzq/main.cxx",
+  "file": "/home/wzqrxzd/projects/tpzq/main.cxx",
+  "output": "CMakeFiles/tpzq.dir/main.cxx.o"
+},
+{
+  "directory": "/home/wzqrxzd/projects/tpzq/build",
+  "command": "/usr/bin/c++   -std=gnu++23 -o CMakeFiles/tpzq.dir/config_manager.cxx.o -c /home/wzqrxzd/projects/tpzq/config_manager.cxx",
+  "file": "/home/wzqrxzd/projects/tpzq/config_manager.cxx",
+  "output": "CMakeFiles/tpzq.dir/config_manager.cxx.o"
+},
+{
+  "directory": "/home/wzqrxzd/projects/tpzq/build",
+  "command": "/usr/bin/c++   -std=gnu++23 -o CMakeFiles/tpzq.dir/hyprland_controller.cxx.o -c /home/wzqrxzd/projects/tpzq/hyprland_controller.cxx",
+  "file": "/home/wzqrxzd/projects/tpzq/hyprland_controller.cxx",
+  "output": "CMakeFiles/tpzq.dir/hyprland_controller.cxx.o"
+},
+{
+  "directory": "/home/wzqrxzd/projects/tpzq/build",
+  "command": "/usr/bin/c++   -std=gnu++23 -o CMakeFiles/tpzq.dir/waybar_controller.cxx.o -c /home/wzqrxzd/projects/tpzq/waybar_controller.cxx",
+  "file": "/home/wzqrxzd/projects/tpzq/waybar_controller.cxx",
+  "output": "CMakeFiles/tpzq.dir/waybar_controller.cxx.o"
+},
+{
+  "directory": "/home/wzqrxzd/projects/tpzq/build",
+  "command": "/usr/bin/c++   -std=gnu++23 -o CMakeFiles/tpzq.dir/wallpaper_controller.cxx.o -c /home/wzqrxzd/projects/tpzq/wallpaper_controller.cxx",
+  "file": "/home/wzqrxzd/projects/tpzq/wallpaper_controller.cxx",
+  "output": "CMakeFiles/tpzq.dir/wallpaper_controller.cxx.o"
+},
+{
+  "directory": "/home/wzqrxzd/projects/tpzq/build",
+  "command": "/usr/bin/c++   -std=gnu++23 -o CMakeFiles/tpzq.dir/wofi_controller.cxx.o -c /home/wzqrxzd/projects/tpzq/wofi_controller.cxx",
+  "file": "/home/wzqrxzd/projects/tpzq/wofi_controller.cxx",
+  "output": "CMakeFiles/tpzq.dir/wofi_controller.cxx.o"
+}
+]
