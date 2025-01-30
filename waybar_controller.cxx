@@ -10,9 +10,6 @@ WaybarController::WaybarController(const nlohmann::json* json)
   if (!json->contains("waybar"))
     throw std::invalid_argument("json: waybar cfg not exists");
 
-  if (!(*json)["waybar"].contains("path"))
-    throw std::invalid_argument("json: waybar_path not exists");
-
   if (!(*json)["waybar"].contains("color"))
     throw std::invalid_argument("json: waybar color not exists");
 
@@ -21,7 +18,7 @@ WaybarController::WaybarController(const nlohmann::json* json)
 
 void WaybarController::apply()
 {
-  std::ifstream ifile((*config)["waybar"]["path"].get<std::string>());
+  std::ifstream ifile(configPath);
   if (!ifile.is_open())
     throw std::invalid_argument("waybar: path not valid");
 
@@ -42,7 +39,7 @@ void WaybarController::apply()
   configData = std::regex_replace(configData, pattern_current_window, "$1" + (*config)["waybar"]["color"].get<std::string>());
   configData = std::regex_replace(configData, pattern_network, "$1" + (*config)["waybar"]["color"].get<std::string>());
 
-  std::ofstream ofile((*config)["waybar"]["path"].get<std::string>());
+  std::ofstream ofile(configPath);
   if (!ofile.is_open())
     throw std::invalid_argument("waybar: path not valid");
 

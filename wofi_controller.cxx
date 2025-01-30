@@ -10,15 +10,12 @@ WofiController::WofiController(const nlohmann::json* json)
   if (!json->contains("wofi"))
     throw std::invalid_argument("json: wofi cfg not exists");
 
-  if (!(*json)["wofi"].contains("path"))
-    throw std::invalid_argument("json wofi_path not exists");
-
   config = json;
 }
 
 void WofiController::apply()
 {
-  std::ifstream ifile((*config)["wofi"]["path"].get<std::string>());
+  std::ifstream ifile(configPath);
   if (!ifile.is_open())
     throw std::invalid_argument("wofi: path not valid");
 
@@ -28,7 +25,7 @@ void WofiController::apply()
   std::regex pattern_selected(R"((#entry:selected\s*\{\s*background-color:\s*)#[0-9A-Fa-f]{6})");
   configData = std::regex_replace(configData, pattern_selected, "$1" + (*config)["wofi"]["color"].get<std::string>());
 
-  std::ofstream ofile((*config)["wofi"]["path"].get<std::string>());
+  std::ofstream ofile(configPath);
   if (!ofile.is_open())
     throw std::invalid_argument("wofi: path not valid");
 

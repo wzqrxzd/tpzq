@@ -10,9 +10,6 @@ HyprlandController::HyprlandController(const nlohmann::json* json)
   if (!json->contains("hyprland"))
     throw std::invalid_argument("json: hyprland cfg not exists");
 
-  if (!(*json)["hyprland"].contains("path"))
-    throw std::invalid_argument("json: hyprland_path not exists");
-
   if (!(*json)["hyprland"].contains("active_color"))
     throw std::invalid_argument("json: hyprland active color not exists");
 
@@ -24,7 +21,7 @@ HyprlandController::HyprlandController(const nlohmann::json* json)
 
 void HyprlandController::apply()
 {
-  std::ifstream ifile((*config)["hyprland"]["path"].get<std::string>());
+  std::ifstream ifile(configPath);
   if (!ifile.is_open())
     throw std::invalid_argument("hyprland: path not valid");
 
@@ -38,7 +35,7 @@ void HyprlandController::apply()
   configData = std::regex_replace(configData, activeBorderRegex, "col.active_border = " + (*config)["hyprland"]["active_color"].get<std::string>());
   configData = std::regex_replace(configData, inactiveBorderRegex, "col.inactive_border = " + (*config)["hyprland"]["inactive_color"].get<std::string>());
 
-  std::ofstream ofile((*config)["hyprland"]["path"].get<std::string>());
+  std::ofstream ofile(configPath);
   if (!ofile.is_open())
     throw std::invalid_argument("hyprland: path not valid");
 

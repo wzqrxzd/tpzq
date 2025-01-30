@@ -15,10 +15,7 @@ void onClick(ConfigManager& mgr, const fs::path& theme, json& configApp);
 
 int main(int argc, char* argv[])
 {
-  fs::path configPath("/home/wzqrxzd/projects/tpzq/build/config.json");
-  fs::path themesDir("/home/wzqrxzd/projects/tpzq/themes/");
-
-  ConfigManager cfgManager(configPath, themesDir);
+  ConfigManager cfgManager;
   auto themesSet = cfgManager.getThemesSet();
   json config = cfgManager.getConfig();
 

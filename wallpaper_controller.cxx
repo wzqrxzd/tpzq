@@ -14,15 +14,12 @@ WallpaperController::WallpaperController(const nlohmann::json* json)
   if (!(*json)["wallpaper"].contains("current"))
     throw std::invalid_argument("json: wallpaper curent not exists");
 
-  if (!(*json)["wallpaper"].contains("hyprpaper_path"))
-    throw std::invalid_argument("json: wallpaper hyprpaper not exists");
-
   config = json;
 }
 
 void WallpaperController::apply()
 {
-  std::ifstream ifile((*config)["wallpaper"]["hyprpaper_path"].get<std::string>());
+  std::ifstream ifile(configPath);
   if (!ifile.is_open())
     throw std::invalid_argument("wallpaper: hyprpaper_path not vald");
 
@@ -35,7 +32,7 @@ void WallpaperController::apply()
   configData = std::regex_replace(configData, pattern_preload, "preload = " + (*config)["wallpaper"]["current"].get<std::string>());
   configData = std::regex_replace(configData, pattern_wallpaper, "wallpaper = eDP-1," + (*config)["wallpaper"]["current"].get<std::string>());
 
-  std::ofstream ofile((*config)["wallpaper"]["hyprpaper_path"].get<std::string>());
+  std::ofstream ofile(configPath);
   if (!ofile.is_open())
     throw std::invalid_argument("wallpaper: hyprpaper_path not valid");
   ofile << configData;
