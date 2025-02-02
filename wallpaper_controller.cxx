@@ -6,13 +6,13 @@
 WallpaperController::WallpaperController(const nlohmann::json* json)
 {
   if (json == nullptr)
-    throw std::invalid_argument("json: pointer == nullptr");
+    throw std::invalid_argument("WallpaperController Json: pointer == nullptr.");
 
   if (!json->contains("wallpaper"))
-    throw std::invalid_argument("json: wallpaper cfg not exists");
+    throw std::invalid_argument("WallpaperController Json: wallpaper cfg not exists.");
 
   if (!(*json)["wallpaper"].contains("current"))
-    throw std::invalid_argument("json: wallpaper curent not exists");
+    throw std::invalid_argument("WallpaperController Json: wallpaper curent not exists.");
 
   config = json;
 }
@@ -21,7 +21,7 @@ void WallpaperController::apply()
 {
   std::ifstream ifile(configPath);
   if (!ifile.is_open())
-    throw std::invalid_argument("wallpaper: hyprpaper_path not vald");
+    throw std::invalid_argument("WallpaperController: error during reading file.");
 
   std::string configData((std::istreambuf_iterator<char>(ifile)), std::istreambuf_iterator<char>());
   ifile.close();
@@ -34,7 +34,7 @@ void WallpaperController::apply()
 
   std::ofstream ofile(configPath);
   if (!ofile.is_open())
-    throw std::invalid_argument("wallpaper: hyprpaper_path not valid");
+    throw std::invalid_argument("WallpaperController: error during saving file.");
   ofile << configData;
   ofile.close();
 

@@ -5,13 +5,13 @@
 WaybarController::WaybarController(const nlohmann::json* json)
 {
   if (json == nullptr)
-    throw std::invalid_argument("json: pointer == nullptr");
+    throw std::invalid_argument("WaybarController Json: pointer == nullptr");
 
   if (!json->contains("waybar"))
-    throw std::invalid_argument("json: waybar cfg not exists");
+    throw std::invalid_argument("WaybarController Json: waybar cfg not exists");
 
   if (!(*json)["waybar"].contains("color"))
-    throw std::invalid_argument("json: waybar color not exists");
+    throw std::invalid_argument("WaybarController Json: waybar color not exists");
 
   config = json;
 }
@@ -20,7 +20,7 @@ void WaybarController::apply()
 {
   std::ifstream ifile(configPath);
   if (!ifile.is_open())
-    throw std::invalid_argument("waybar: path not valid");
+    throw std::invalid_argument("WaybarController: error during reading file");
 
   std::string configData((std::istreambuf_iterator<char>(ifile)), std::istreambuf_iterator<char>());
   ifile.close();
@@ -41,7 +41,7 @@ void WaybarController::apply()
 
   std::ofstream ofile(configPath);
   if (!ofile.is_open())
-    throw std::invalid_argument("waybar: path not valid");
+    throw std::invalid_argument("WaybarController: error during saving file");
 
   ofile << configData;
   ofile.close();

@@ -15,6 +15,7 @@ add_executable(tpzq
   waybar_controller.cxx
   wallpaper_controller.cxx
   wofi_controller.cxx
+  cava_controller.cxx
 )
 
 target_link_libraries(tpzq

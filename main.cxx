@@ -10,6 +10,7 @@
 #include "waybar_controller.hxx"
 #include "wallpaper_controller.hxx"
 #include "wofi_controller.hxx"
+#include "cava_controller.hxx"
 
 void onClick(ConfigManager& mgr, const fs::path& theme, json& configApp);
 
@@ -34,12 +35,13 @@ int main(int argc, char* argv[])
   );
 
   window->setStyleSheet(windowStyle.c_str());
+  layout->setSpacing(20);
+  layout->setContentsMargins(20, 0, 20, 0);
 
   for (const auto& theme : themesSet)
   {
     QPushButton* button = new QPushButton(QString::fromStdString(theme.stem()));
-    button->setFixedSize(100, 100);
-    layout->setSpacing(30);
+    button->setFixedSize(75, 75);
 
     button->setStyleSheet(
         buttonStyle.c_str()
@@ -49,9 +51,9 @@ int main(int argc, char* argv[])
     layout->addWidget(button);
   }
 
-  int windowWidth = 100 + 30 * (themesSet.size() - 1) + 100 * themesSet.size();
+  int windowWidth = 20 + (themesSet.size() * 75) + (themesSet.size() - 1) * 20 + 20;
   window->setFixedWidth(windowWidth);
-  window->setFixedHeight(150);
+  window->setFixedHeight(100);
   window->setWindowTitle("tpzq");
 
   window->show();
@@ -69,6 +71,7 @@ void onClick(ConfigManager& mgr, const fs::path& theme, json& configApp)
   controllers.push_back(std::make_unique<WaybarController>(&config));
   controllers.push_back(std::make_unique<HyprlandController>(&config));
   controllers.push_back(std::make_unique<WofiController>(&config));
+  controllers.push_back(std::make_unique<CavaController>(&config));
   controllers.push_back(std::make_unique<WallpaperController>(&config));
 
   for (const auto& controller : controllers)
