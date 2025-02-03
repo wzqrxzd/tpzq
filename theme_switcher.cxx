@@ -56,16 +56,43 @@ void ThemeSwitcher::setupUI()
 void ThemeSwitcher::onButtonClick(const fs::path& theme)
 {
   json configTheme = cfgManager.getTheme(theme);
-  this->config["accent_color"] = configTheme["tpzq"]["accent_color"].get<std::string>();
-  this->config["hovered_color"] = configTheme["tpzq"]["hovered_color"].get<std::string>();
+
+  try {
+    if (!configTheme.contains("tpzq"))
+      throw std::runtime_error("TPZQ: tpzq cfg not exists");
+    if (!configTheme["tpzq"].contains("accent_color"))
+      throw std::runtime_error("TPZQ: tpzq accent_color not exists");
+    if (!configTheme["tpzq"].contains("hovered_color"))
+      throw std::runtime_error("TPZQ: tpzq accent_color not exists");
+
+    this->config["accent_color"] = configTheme["tpzq"]["accent_color"].get<std::string>();
+    this->config["hovered_color"] = configTheme["tpzq"]["hovered_color"].get<std::string>();
+  } catch (const std::runtime_error& e) {
+    spdlog::warn("{}", e.what());
+  }
+
   cfgManager.saveConfig(this->config);
 
   std::vector<std::unique_ptr<Controller>> controllers;
-  controllers.push_back(std::make_unique<WaybarController>(&configTheme));
-  controllers.push_back(std::make_unique<HyprlandController>(&configTheme));
-  controllers.push_back(std::make_unique<WofiController>(&configTheme));
-  controllers.push_back(std::make_unique<CavaController>(&configTheme));
-  controllers.push_back(std::make_unique<WallpaperController>(&configTheme));
+  auto tryAddController = [&controllers](auto&& createFunc)
+  {
+    try {
+      controllers.push_back(createFunc());
+    } catch (const std::runtime_error& e) {
+      /*spdlog::warn("Controller creation failed:");*/
+      spdlog::warn("{}", e.what());
+    } catch (const std::invalid_argument& e)
+    {
+      /*spdlog::warn("Controller creation failed:");*/
+      spdlog::warn("{}", e.what());
+    }
+  };
+
+  tryAddController([&] { return std::make_unique<WaybarController>(&configTheme); });
+  tryAddController([&] { return std::make_unique<HyprlandController>(&configTheme); });
+  tryAddController([&] { return std::make_unique<WofiController>(&configTheme); });
+  tryAddController([&] { return std::make_unique<CavaController>(&configTheme); });
+  tryAddController([&] { return std::make_unique<WallpaperController>(&configTheme); });
 
   for (const auto& controller : controllers)
     controller->apply();
