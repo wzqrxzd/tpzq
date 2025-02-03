@@ -1,6 +1,5 @@
 #include "theme_switcher.hxx"
 #include <format>
-#include <iostream>
 
 #include "hyprland_controller.hxx"
 #include "waybar_controller.hxx"
@@ -35,20 +34,20 @@ void ThemeSwitcher::setupUI()
 {
   layout = new QHBoxLayout(this);
   this->setStyleSheet(getWindowStyle().c_str());
-  layout->setSpacing(20);
-  layout->setContentsMargins(20, 0, 20, 0);
+  layout->setSpacing(spacing);
+  layout->setContentsMargins(spacing, 0, spacing, 0);
 
   for (const auto& theme : themesSet)
   {
     QPushButton* button = new QPushButton(QString::fromStdString(theme.stem()));
-    button->setFixedSize(75, 75);
+    button->setFixedSize(buttonWidth, buttonHeight);
     button->setStyleSheet(getButtonStyle().c_str());
 
     QObject::connect(button, &QPushButton::clicked, [&theme, this](){ onButtonClick(theme); });
     layout->addWidget(button);
   }
 
-  int windowWidth = 20 + (themesSet.size() * 75) + (themesSet.size() - 1) * 20 + 20;
+  int windowWidth = spacing + (themesSet.size() * buttonWidth) + (themesSet.size() - 1) * spacing + spacing;
   this->setFixedWidth(windowWidth);
   this->setFixedHeight(100);
   this->setWindowTitle("tpzq");

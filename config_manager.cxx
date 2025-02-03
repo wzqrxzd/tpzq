@@ -88,7 +88,7 @@ void ConfigManager::saveConfig(const json& config)
   if (!fs::exists(configPath.parent_path()))
    fs::create_directory(configPath.parent_path()); 
 
-  spdlog::info("Config dir: {}.", configPath.parent_path().string());
+  spdlog::info("Config dir: {}", configPath.parent_path().string());
 
   std::ofstream ofile(configPath);
   if (!ofile.is_open())

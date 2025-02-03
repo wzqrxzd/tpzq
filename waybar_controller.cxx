@@ -20,7 +20,7 @@ void WaybarController::apply()
 {
   std::ifstream ifile(configPath);
   if (!ifile.is_open())
-    throw std::invalid_argument("WaybarController: error during reading file");
+    throw std::runtime_error("WaybarController: error during reading file");
 
   std::string configData((std::istreambuf_iterator<char>(ifile)), std::istreambuf_iterator<char>());
   ifile.close();
@@ -41,7 +41,7 @@ void WaybarController::apply()
 
   std::ofstream ofile(configPath);
   if (!ofile.is_open())
-    throw std::invalid_argument("WaybarController: error during saving file");
+    throw std::runtime_error("WaybarController: error during saving file");
 
   ofile << configData;
   ofile.close();

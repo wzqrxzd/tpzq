@@ -20,7 +20,7 @@ void WofiController::apply()
 {
   std::ifstream ifile(configPath);
   if (!ifile.is_open())
-    throw std::invalid_argument("WofiController: error during reading file.");
+    throw std::runtime_error("WofiController: error during reading file.");
 
   std::string configData((std::istreambuf_iterator<char>(ifile)), std::istreambuf_iterator<char>());
   ifile.close();
@@ -30,7 +30,7 @@ void WofiController::apply()
 
   std::ofstream ofile(configPath);
   if (!ofile.is_open())
-    throw std::invalid_argument("WofiController: error during saving file.");
+    throw std::runtime_error("WofiController: error during saving file.");
 
   ofile << configData;
   ofile.close();

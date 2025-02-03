@@ -31,7 +31,7 @@ void CavaController::apply()
 
   std::ofstream ofile(configPath);
   if (!ofile.is_open())
-    throw std::invalid_argument("CavaController: error during saving file.");
+    throw std::runtime_error("CavaController: error during saving file.");
 
   ofile << configData;
   ofile.close();

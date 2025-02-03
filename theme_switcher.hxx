@@ -15,6 +15,10 @@ class ThemeSwitcher : public QWidget
   public:
     ThemeSwitcher(QWidget* parent = nullptr);
   private:
+    const int buttonHeight = 75;
+    const int buttonWidth = 75;
+    const int spacing = 20;
+
     ConfigManager cfgManager;
     json config;
     std::unordered_set<fs::path> themesSet;
